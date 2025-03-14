@@ -1,9 +1,6 @@
 import sys;
 import pygame as pg;
 import numpy as np;
-import map;
-import player;
-import settings;
 
 xRes = 800;
 yRes = 600;
