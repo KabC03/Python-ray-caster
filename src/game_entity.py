@@ -27,10 +27,10 @@ class Entity:
         newX = self.xPos + self.moveSpeed * np.cos(self.angle);
         newY = self.xPos + self.moveSpeed * np.sin(self.angle);
 
-        if game_map.map.is_collision(newX, self.yPos) == False:
+        if map.is_collision(newX, self.yPos) == False:
             self.xPos = newX;
 
-        if game_map.map.is_collision(self.xPos, newY) == False:
+        if map.is_collision(self.xPos, newY) == False:
             self.yPos = newY;
         
         return None;
@@ -40,10 +40,10 @@ class Entity:
         newX = self.xPos - self.moveSpeed * np.cos(self.angle);
         newY = self.xPos - self.moveSpeed * np.sin(self.angle);
 
-        if game_map.map.is_collision(newX, self.yPos) == False:
+        if map.is_collision(newX, self.yPos) == False:
             self.xPos = newX;
 
-        if game_map.map.is_collision(self.xPos, newY) == False:
+        if map.is_collision(self.xPos, newY) == False:
             self.yPos = newY;
 
         return None;

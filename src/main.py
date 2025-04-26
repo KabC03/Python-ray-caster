@@ -18,14 +18,14 @@ def main() -> int:
         np.array([
             [1, 1, 1, 1, 1, 1, 1, 1],
             [1, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 1, 0, 1, 0, 0, 1],
-            [1, 0, 1, 0, 1, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 1],
             [1, 0, 0, 0, 0, 1, 0, 1],
             [1, 1, 1, 1, 1, 1, 1, 1],
         ]),
         100
     );
-    player = game_player.Player(0.01, 0.01, 200, 200, 0);
+    player = game_player.Player(0.01, 0.04, 200, 200, 0);
     DELTA_ANGLE = game_settings.PLAYER_FOV / game_settings.NUM_RAYS;
     DIST_TO_PLANE = (game_settings.SCREEN_WIDTH // 2) / np.tan(game_settings.PLAYER_FOV / 2);
     SLICE_SIZE = game_settings.SCREEN_WIDTH // game_settings.NUM_RAYS;
@@ -44,9 +44,9 @@ def main() -> int:
         if keys[pg.K_ESCAPE]:
             running = False;
         if keys[pg.K_LEFT]:
-            player.turn_left(map);
+            player.turn_left();
         if keys[pg.K_RIGHT]:
-            player.turn_right(map);
+            player.turn_right();
         if keys[pg.K_UP]:
             player.move_forward(map);
         if keys[pg.K_DOWN]:
@@ -62,8 +62,8 @@ def main() -> int:
 
             for depth in range(game_settings.RAY_DEPTH):
 
-                rayX = np.round((player.xPos + depth * np.cos(rayAngle)) / map.tileSize);
-                rayY = np.round((player.YPos + depth * np.sin(rayAngle)) / map.tileSize);
+                rayX = int(np.round((player.xPos + depth * np.cos(rayAngle)) / map.tileSize));
+                rayY = int(np.round((player.yPos + depth * np.sin(rayAngle)) / map.tileSize));
 
                 if 0 < rayX < map.width and 0 < rayY < map.height:
                     if map.map[rayX, rayY] != game_map.MAP_EMPTY_SPACE:
@@ -74,7 +74,7 @@ def main() -> int:
                         color = 255 / (1 + (depth ** 2) * 0.0001);
                         color = min(255, max(0, int(color)));
 
-                        pg.draw.rect(screen, (color, color, color), (ray * SLICE_SIZE, (game_settings.HEIGHT // 2) - wallHeight // 2, SLICE_SIZE, wallHeight));
+                        pg.draw.rect(screen, (color, color, color), (ray * SLICE_SIZE, (game_settings.SCREEN_HEIGHT // 2) - wallHeight // 2, SLICE_SIZE, wallHeight));
                         break;
 
 
