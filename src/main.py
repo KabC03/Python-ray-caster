@@ -74,7 +74,7 @@ def main() -> int:
                         color = 255 / (1 + (depth ** 2) * 0.0001);
                         color = min(255, max(0, int(color)));
 
-                        pg.draw.rect(screen, (color, color, color), (ray * SLICE_SIZE, (game_settings.HEIGHT//2) - wallHeight // 2, SLICE_SIZE, wallHeight));
+                        pg.draw.rect(screen, (color, color, color), (ray * SLICE_SIZE, (game_settings.HEIGHT // 2) - wallHeight // 2, SLICE_SIZE, wallHeight));
                         break;
 
 
