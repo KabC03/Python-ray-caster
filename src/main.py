@@ -16,16 +16,30 @@ def main() -> int:
 
     map_array = game_map.Map(
         np.array([
-            [1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 0, 0, 0, 1, 0, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,1,0,0,1],
+            [1,0,1,0,1,0,1,1,1,0,1,0,1,0,1,0,1,1,0,1],
+            [1,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,1,0,1],
+            [1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,0,1],
+            [1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1,0,1],
+            [1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,0,1],
+            [1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1,0,1,0,1],
+            [1,0,1,0,1,1,1,1,1,0,1,1,1,1,0,1,0,1,0,1],
+            [1,0,1,0,0,0,0,0,1,0,0,0,0,1,0,1,0,1,0,1],
+            [1,0,1,1,1,1,1,0,1,1,1,1,0,1,1,1,0,1,0,1],
+            [1,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,1,0,1],
+            [1,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,0,1],
+            [1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1],
+            [1,0,1,0,1,1,1,1,0,1,1,1,1,1,1,1,0,1,0,1],
+            [1,0,1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1],
+            [1,0,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,0,1],
+            [1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,1],
+            [1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
         ]),
         100
     );
-    player = game_player.Player(5, 0.04, 200, 200, 0);
+    player = game_player.Player(2, 10, 0.1, 200, 200, 0);
     DELTA_ANGLE = game_settings.PLAYER_FOV / game_settings.NUM_RAYS;
     DIST_TO_PLANE = (game_settings.SCREEN_WIDTH // 2) / np.tan(game_settings.PLAYER_FOV / 2);
     SLICE_SIZE = game_settings.SCREEN_WIDTH // game_settings.NUM_RAYS;
@@ -49,8 +63,10 @@ def main() -> int:
             player.turn_right();
         if keys[pg.K_UP]:
             player.move_forward(map_array);
+        if keys[pg.K_LSHIFT]:
+            player.sprint_forward(map_array);
         if keys[pg.K_DOWN]:
-            player.move_backward(map_array)
+            player.move_backward(map_array);
 
         screen.fill(game_settings.BLACK);
 
@@ -71,7 +87,7 @@ def main() -> int:
         
                         wallHeight = (map_array.tileSize / (depth + 0.0001)) * DIST_TO_PLANE; #0.0001 avoids zero division
 
-                        color = 255 / (1 + (depth ** 2) * 0.0001);
+                        color = 100 / (1 + (depth ** 2) * 0.0001);
                         color = min(255, max(0, int(color)));
 
                         pg.draw.rect(screen, (color, color, color), (ray * SLICE_SIZE, (game_settings.SCREEN_HEIGHT // 2) - wallHeight // 2, SLICE_SIZE, wallHeight));

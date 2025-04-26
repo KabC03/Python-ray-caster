@@ -13,8 +13,8 @@ class Map:
     #Check if a position is in a wall (collision)
     def is_collision(self, xPos: float, yPos: float) -> bool:
 
-        xCoord = int(np.round(xPos / self.tileSize));
-        yCoord = int(np.round(yPos / self.tileSize));
+        xCoord = int(xPos / self.tileSize);
+        yCoord = int(yPos / self.tileSize);
 
         if 0 <= xCoord < self.width and 0 <= yCoord < self.height:
             if self.map_array[yCoord, xCoord] == MAP_EMPTY_SPACE:

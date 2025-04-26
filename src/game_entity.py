@@ -3,13 +3,15 @@ import numpy as np;
 
 
 class Entity:
-    def __init__(self, moveSpeed: float, turnSpeed: float, xPos: float, yPos: float, angle: float) -> None:
+    def __init__(self, moveSpeed: float, sprintSpeed: float, turnSpeed: float,xPos: float, yPos: float, angle: float) -> None:
         self.moveSpeed = moveSpeed;
+        self.sprintSpeed = sprintSpeed;
         self.turnSpeed = turnSpeed;
         self.xPos = xPos;
         self.yPos = yPos;
         self.angle = angle;
         return None;
+
 
 
     #Turn left
@@ -34,6 +36,21 @@ class Entity:
             self.yPos = newY;
         
         return None;
+
+
+    #Sprint
+    def sprint_forward(self, map: np.array) -> None:
+        newX = self.xPos + self.sprintSpeed * np.cos(self.angle);
+        newY = self.yPos + self.sprintSpeed * np.sin(self.angle);
+
+        if map.is_collision(newX, self.yPos) == False:
+            self.xPos = newX;
+
+        if map.is_collision(self.xPos, newY) == False:
+            self.yPos = newY;
+        
+        return None;
+
 
     #Move backward
     def move_backward(self, map: np.array) -> None:
