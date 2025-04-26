@@ -2,16 +2,6 @@ import game_settings;
 import numpy as np;
 
 
-#world_map = [
-#    [1,1,1,1,1,1,1,1],
-#    [1,0,0,0,0,0,0,1],
-#    [1,0,1,0,1,0,0,1],
-#    [1,0,1,0,1,0,0,1],
-#    [1,0,0,0,0,1,0,1],
-#    [1,1,1,1,1,1,1,1]
-#]
-
-
 MAP_EMPTY_SPACE = 0; #Empty space in a map is 0
 class Map:
     def __init__(self, map: np.array, tileSize: float) -> None:

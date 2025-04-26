@@ -50,8 +50,14 @@ def main() -> int:
         keys = pg.key.get_pressed();
         if keys[pg.K_ESCAPE]:
             running = False;
-
-
+        if keys[pg.K_LEFT]:
+            player.turn_left();
+        if keys[pg.K_RIGHT]:
+            player.turn_right();
+        if keys[pg.K_UP]:
+            player.move_forward();
+        if keys[pg.K_DOWN]:
+            player.move_backward()
 
 
 
