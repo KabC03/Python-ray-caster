@@ -14,18 +14,18 @@ class Entity:
 
     #Turn left
     def turn_left(self) -> None:
-        self.angle += self.turnSpeed;
+        self.angle -= self.turnSpeed;
         return None;
 
     #Turn right
     def turn_right(self) -> None:
-        self.angle -= self.turnSpeed;
+        self.angle += self.turnSpeed;
         return None;
 
     #Move forward
     def move_forward(self, map: np.array) -> None:
         newX = self.xPos + self.moveSpeed * np.cos(self.angle);
-        newY = self.xPos + self.moveSpeed * np.sin(self.angle);
+        newY = self.yPos + self.moveSpeed * np.sin(self.angle);
 
         if map.is_collision(newX, self.yPos) == False:
             self.xPos = newX;
@@ -38,7 +38,7 @@ class Entity:
     #Move backward
     def move_backward(self, map: np.array) -> None:
         newX = self.xPos - self.moveSpeed * np.cos(self.angle);
-        newY = self.xPos - self.moveSpeed * np.sin(self.angle);
+        newY = self.yPos - self.moveSpeed * np.sin(self.angle);
 
         if map.is_collision(newX, self.yPos) == False:
             self.xPos = newX;
