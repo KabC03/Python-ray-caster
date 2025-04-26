@@ -1,42 +1,48 @@
 import sys;
 import pygame as pg;
 import numpy as np;
-
-xRes = 800;
-yRes = 600;
+import settings;
 
 
-def main():
+def internal_clock_frame(clock: pg.time.Clock) -> None:
+    clock.tick(60);
+
+
+
+
+
+
+def main() -> int:
     pg.init();
-
-    screen = pg.display.set_mode((xRes, yRes));
-    pg.display.set_caption("Raycaster");
+    clock = pg.time.Clock();
 
     running = True;
     while running:
         for event in pg.event.get():
-
             if event.type == pg.QUIT:
                 running = False;
-            
-            elif event.type == pg.KEYDOWN:
-                if event.key == pg.K_ESCAPE:
-                    running = False;
+
+
+
+        keys = pg.key.get_pressed();
+        
 
 
 
 
+        internal_clock_frame(clock);
 
 
-    pg.quit();
     return 0;
-
-
 
 
 
 if __name__ == "__main__":
     sys.exit(main());
+
+
+
+
 
 
 
