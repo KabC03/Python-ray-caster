@@ -37,9 +37,9 @@ def main() -> int:
             [1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1],
             [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
         ]),
-        100
+        10
     );
-    player = game_player.Player(2, 5, 0.1, 200, 200, 0);
+    player = game_player.Player(0.2, 0.5, 0.1, 10, 10, 0);
     DELTA_ANGLE = game_settings.PLAYER_FOV / game_settings.NUM_RAYS;
     DIST_TO_PLANE = (game_settings.SCREEN_WIDTH // 2) / np.tan(game_settings.PLAYER_FOV / 2);
     SLICE_SIZE = game_settings.SCREEN_WIDTH // game_settings.NUM_RAYS;
