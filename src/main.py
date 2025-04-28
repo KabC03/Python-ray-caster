@@ -37,7 +37,7 @@ def main() -> int:
             [1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1],
             [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
         ]),
-        10
+        50
     );
     player = game_player.Player(0.2, 0.5, 0.1, 10, 10, 0);
     DELTA_ANGLE = game_settings.PLAYER_FOV / game_settings.NUM_RAYS;
