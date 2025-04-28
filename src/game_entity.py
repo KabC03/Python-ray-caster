@@ -13,6 +13,10 @@ class Entity:
         return None;
 
 
+    #Set angle
+    def set_angle(self, angle: float) -> None:
+        self.angle = angle;
+        return None;
 
     #Turn left
     def turn_left(self) -> None:
@@ -67,7 +71,31 @@ class Entity:
 
 
 
+    def strafe_left(self, map: np.array) -> None:
 
+        newX = self.xPos - self.moveSpeed * np.cos(self.angle + np.pi/2);
+        newY = self.yPos - self.moveSpeed * np.sin(self.angle + np.pi/2);
+
+        if map.is_collision(newX, self.yPos) == False:
+            self.xPos = newX;
+
+        if map.is_collision(self.xPos, newY) == False:
+            self.yPos = newY;
+        return None;
+
+
+
+    def strafe_right(self, map: np.array) -> None:
+
+        newX = self.xPos + self.moveSpeed * np.cos(self.angle + np.pi/2);
+        newY = self.yPos + self.moveSpeed * np.sin(self.angle + np.pi/2);
+
+        if map.is_collision(newX, self.yPos) == False:
+            self.xPos = newX;
+
+        if map.is_collision(self.xPos, newY) == False:
+            self.yPos = newY;
+        return None;
 
 
 
