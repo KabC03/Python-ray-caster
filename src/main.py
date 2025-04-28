@@ -39,7 +39,7 @@ def main() -> int:
         ]),
         50
     );
-    player = game_player.Player(0.2, 0.5, 0.1, 10, 10, 0);
+    player = game_player.Player(0.5, 1, 0.1,50, 50, 0);
     DELTA_ANGLE = game_settings.PLAYER_FOV / game_settings.NUM_RAYS;
     DIST_TO_PLANE = (game_settings.SCREEN_WIDTH // 2) / np.tan(game_settings.PLAYER_FOV / 2);
     SLICE_SIZE = game_settings.SCREEN_WIDTH // game_settings.NUM_RAYS;
