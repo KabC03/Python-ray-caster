@@ -2,6 +2,7 @@ import game_map;
 import numpy as np;
 
 
+
 class Entity:
     def __init__(self, moveSpeed: float, sprintSpeed: float, turnSpeed: float,xPos: float, yPos: float, angle: float) -> None:
         self.moveSpeed = moveSpeed;

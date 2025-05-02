@@ -1,6 +1,6 @@
 clear
 
-pip3 install pygame numpy
+pip3 install pygame numpy numba
 
 
 python3 ./src/main.py

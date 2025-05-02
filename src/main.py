@@ -11,7 +11,7 @@ def main() -> int:
     pg.init();
     clock = pg.time.Clock();
     screen = pg.display.set_mode((game_settings.SCREEN_WIDTH, game_settings.SCREEN_HEIGHT));
-    pg.display.set_caption("Process");
+
 
 
     map_array = game_map.Map(
@@ -108,7 +108,7 @@ def main() -> int:
                         break;
 
 
-
+        pg.display.set_caption("Process :: " + str(round(clock.get_fps(), 2)));
 
         clock.tick(game_settings.FPS);
         pg.display.flip();
