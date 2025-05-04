@@ -74,11 +74,11 @@ def main() -> int:
         if keys[pg.K_d]:
             player.strafe_right(map_array);
         
-        if keys[pg.K_w]:
+        if keys[pg.K_w] or keys[pg.K_UP]:
             player.move_forward(map_array);
-        if keys[pg.K_LSHIFT]:
+        if keys[pg.K_LSHIFT] or keys[pg.K_RSHIFT]:
             player.sprint_forward(map_array);
-        if keys[pg.K_s]:
+        if keys[pg.K_s] or keys[pg.K_DOWN]:
             player.move_backward(map_array);
 
 
